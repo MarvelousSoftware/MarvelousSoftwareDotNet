@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Reflection;
 
-namespace MarvelousSoftware.Common.Extensions
+namespace MarvelousSoftware.Core.Extensions
 {
     public static class ObjectExtensions
     {

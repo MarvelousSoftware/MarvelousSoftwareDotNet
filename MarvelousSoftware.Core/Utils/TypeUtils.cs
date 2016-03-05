@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace MarvelousSoftware.Common.Utils
+namespace MarvelousSoftware.Core.Utils
 {
     public static class TypeUtils
     {

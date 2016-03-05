@@ -35,9 +35,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoreException.cs" />
+    <Compile Include="Extensions\ExpressionExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="IRequestWrapper.cs" />
     <Compile Include="RequestUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\ExpressionUtils.cs" />
+    <Compile Include="Utils\TypeUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LICENSE" />

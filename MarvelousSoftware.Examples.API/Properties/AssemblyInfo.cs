@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("MarvelousSoftware.Examples.API")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("MarvelousSoftware products usage examples.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MarvelousSoftware.Examples.API")]

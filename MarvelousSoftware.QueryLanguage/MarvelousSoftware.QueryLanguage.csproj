@@ -127,10 +127,6 @@
     <Compile Include="SimplifiedFiltering\SimplifiedFilteringModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MarvelousSoftware.Common\MarvelousSoftware.Common.csproj">
-      <Project>{D9474F8F-0530-4EB5-A99B-028705C9602C}</Project>
-      <Name>MarvelousSoftware.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MarvelousSoftware.Core\MarvelousSoftware.Core.csproj">
       <Project>{91C10555-6F3C-44AB-8526-4F4A1CE9501B}</Project>
       <Name>MarvelousSoftware.Core</Name>

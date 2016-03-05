@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("MarvelousSoftware.QueryLanguage")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Marvelous Query Language is a domain specific language designed to filter IQueryable sources.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MarvelousSoftware.QueryLanguage")]

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace MarvelousSoftware.Common.Extensions
+namespace MarvelousSoftware.Core.Extensions
 {
     public static class TypeExtensions
     {

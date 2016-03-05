@@ -1,4 +1,4 @@
-namespace MarvelousSoftware.Grid.DataSource
+namespace MarvelousSoftware.Core
 {
     public interface IRequestWrapper
     {

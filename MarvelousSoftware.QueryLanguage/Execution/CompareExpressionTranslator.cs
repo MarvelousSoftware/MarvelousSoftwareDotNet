@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
-using MarvelousSoftware.Common.Utils;
+using MarvelousSoftware.Core.Utils;
 using MarvelousSoftware.QueryLanguage.Config;
 using MarvelousSoftware.QueryLanguage.Models;
 using MarvelousSoftware.QueryLanguage.Parsing.Expressions;

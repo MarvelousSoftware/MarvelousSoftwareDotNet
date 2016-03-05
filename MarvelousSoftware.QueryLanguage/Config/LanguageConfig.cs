@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using MarvelousSoftware.Common.Extensions;
+using MarvelousSoftware.Core.Extensions;
 using MarvelousSoftware.QueryLanguage.AutoCompletion;
 using MarvelousSoftware.QueryLanguage.Lexing;
 using MarvelousSoftware.QueryLanguage.Lexing.Functions;

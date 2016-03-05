@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Damian Kaminski</authors>
+    <owners>Damian Kaminski</owners>
+    <licenseUrl>http://www.gnu.org/licenses/gpl-3.0.txt</licenseUrl>
+    <projectUrl>http://marvelous.software/docs.html#/grid</projectUrl>
+    <iconUrl>http://marvelous.software/favicons/favicon-32x32.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright 2016</copyright>
+    <tags>MarvelousSoftware marvelous.software MarvelousSoftware.Grid grid datasource aurelia</tags>
+  </metadata>
+</package>

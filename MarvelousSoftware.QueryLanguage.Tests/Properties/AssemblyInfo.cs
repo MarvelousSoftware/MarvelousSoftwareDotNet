@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("MarvelousSoftware.QueryLanguage.Tests")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Marvelous Query Language tests.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MarvelousSoftware.QueryLanguage.Tests")]

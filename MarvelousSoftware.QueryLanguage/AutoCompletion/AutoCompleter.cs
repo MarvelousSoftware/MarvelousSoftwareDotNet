@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MarvelousSoftware.Common.Utils;
+using MarvelousSoftware.Core.Utils;
 using MarvelousSoftware.QueryLanguage.AutoCompletion.Completers;
 using MarvelousSoftware.QueryLanguage.Config;
 using MarvelousSoftware.QueryLanguage.Lexing;

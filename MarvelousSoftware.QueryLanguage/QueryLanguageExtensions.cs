@@ -4,7 +4,6 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Web.Script.Serialization;
 using MarvelousSoftware.Core;
-using MarvelousSoftware.Grid.DataSource;
 using MarvelousSoftware.QueryLanguage.Config;
 using MarvelousSoftware.QueryLanguage.Models;
 
@@ -16,7 +15,7 @@ namespace MarvelousSoftware.QueryLanguage
         {
             var request = RequestUtils.GetRequestWrapper();
 
-            var query = GetQuery<T>(request);
+            var query = GetQuery(request);
             if (query == null)
             {
                 return new QueryLanguageFilterResult<T>()
@@ -35,7 +34,7 @@ namespace MarvelousSoftware.QueryLanguage
             };
         }
 
-        private static string GetQuery<T>(IRequestWrapper request)
+        private static string GetQuery(IRequestWrapper request)
         {
             if (!request.Has("marvelousParams") && !request.Has("query"))
             {

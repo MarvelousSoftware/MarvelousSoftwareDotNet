@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using MarvelousSoftware.Common.Utils;
+using MarvelousSoftware.Core.Utils;
 using MarvelousSoftware.QueryLanguage.Config;
 using MarvelousSoftware.QueryLanguage.Lexing;
 using MarvelousSoftware.QueryLanguage.Lexing.Tokens;

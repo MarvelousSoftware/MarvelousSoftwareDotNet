@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace MarvelousSoftware.Common.Extensions
+namespace MarvelousSoftware.Core.Extensions
 {
     public static class ExpressionExtensions
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using MarvelousSoftware.Common.Extensions;
+using MarvelousSoftware.Core.Extensions;
 using MarvelousSoftware.QueryLanguage.Attributes;
 using MarvelousSoftware.QueryLanguage.Lexing;
 using MarvelousSoftware.QueryLanguage.Models;

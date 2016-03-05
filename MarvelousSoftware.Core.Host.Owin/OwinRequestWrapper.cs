@@ -1,5 +1,4 @@
-﻿using MarvelousSoftware.Grid.DataSource;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 
 namespace MarvelousSoftware.Core.Host.Owin
 {
