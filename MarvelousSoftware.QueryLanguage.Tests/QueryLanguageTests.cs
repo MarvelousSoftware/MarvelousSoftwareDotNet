@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using MarvelousSoftware.QueryLanguage.Config;
 using MarvelousSoftware.QueryLanguage.Tests.Model;
 using FluentAssertions;
-using MarvelousSoftware.QueryLanguage.Lexer.Functions;
+using MarvelousSoftware.QueryLanguage.Lexing.Functions;
 using MarvelousSoftware.QueryLanguage.Models;
 using NUnit.Framework;
 using static System.String;

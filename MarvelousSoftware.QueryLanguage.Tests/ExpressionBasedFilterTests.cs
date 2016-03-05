@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using FluentAssertions;
 using MarvelousSoftware.QueryLanguage.Config;
 using MarvelousSoftware.QueryLanguage.Execution;
-using MarvelousSoftware.QueryLanguage.Lexer.Tokens;
+using MarvelousSoftware.QueryLanguage.Lexing.Tokens;
 using MarvelousSoftware.QueryLanguage.Parsing.Expressions;
 using MarvelousSoftware.QueryLanguage.Parsing.Expressions.Abstract;
 using MarvelousSoftware.QueryLanguage.Tests.Model;

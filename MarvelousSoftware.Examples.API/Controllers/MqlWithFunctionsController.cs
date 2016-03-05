@@ -5,7 +5,7 @@ using MarvelousSoftware.Examples.Samples;
 using MarvelousSoftware.QueryLanguage;
 using MarvelousSoftware.QueryLanguage.AutoCompletion;
 using MarvelousSoftware.QueryLanguage.Config;
-using MarvelousSoftware.QueryLanguage.Lexer.Functions;
+using MarvelousSoftware.QueryLanguage.Lexing.Functions;
 using MarvelousSoftware.QueryLanguage.Models;
 
 namespace MarvelousSoftware.Examples.API.Controllers

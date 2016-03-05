@@ -1,5 +1,5 @@
 ﻿using System.Data.SqlTypes;
-using MarvelousSoftware.QueryLanguage.Lexer.Tokens;
+using MarvelousSoftware.QueryLanguage.Lexing.Tokens;
 using MarvelousSoftware.QueryLanguage.Parsing.Expressions.Abstract;
 using MarvelousSoftware.QueryLanguage.Parsing.Models;
 

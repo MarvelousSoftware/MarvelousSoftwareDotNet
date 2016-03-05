@@ -1,7 +1,7 @@
 ﻿using MarvelousSoftware.QueryLanguage.Config;
-using MarvelousSoftware.QueryLanguage.Lexer;
-using MarvelousSoftware.QueryLanguage.Lexer.Tokenizers;
-using MarvelousSoftware.QueryLanguage.Lexer.Tokenizers.Abstract;
+using MarvelousSoftware.QueryLanguage.Lexing;
+using MarvelousSoftware.QueryLanguage.Lexing.Tokenizers;
+using MarvelousSoftware.QueryLanguage.Lexing.Tokenizers.Abstract;
 using NUnit.Framework;
 
 namespace MarvelousSoftware.QueryLanguage.Tests.LexerParsers

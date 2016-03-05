@@ -4,8 +4,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using MarvelousSoftware.Common.Extensions;
 using MarvelousSoftware.QueryLanguage.AutoCompletion;
-using MarvelousSoftware.QueryLanguage.Lexer;
-using MarvelousSoftware.QueryLanguage.Lexer.Functions;
+using MarvelousSoftware.QueryLanguage.Lexing;
+using MarvelousSoftware.QueryLanguage.Lexing.Functions;
 using MarvelousSoftware.QueryLanguage.Models;
 
 namespace MarvelousSoftware.QueryLanguage.Config

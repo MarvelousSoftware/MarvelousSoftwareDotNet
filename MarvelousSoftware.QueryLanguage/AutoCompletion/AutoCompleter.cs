@@ -3,8 +3,8 @@ using System.Linq;
 using MarvelousSoftware.Common.Utils;
 using MarvelousSoftware.QueryLanguage.AutoCompletion.Completers;
 using MarvelousSoftware.QueryLanguage.Config;
-using MarvelousSoftware.QueryLanguage.Lexer;
-using MarvelousSoftware.QueryLanguage.Lexer.Tokens.Abstract;
+using MarvelousSoftware.QueryLanguage.Lexing;
+using MarvelousSoftware.QueryLanguage.Lexing.Tokens.Abstract;
 
 namespace MarvelousSoftware.QueryLanguage.AutoCompletion
 {

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using MarvelousSoftware.QueryLanguage.Lexer;
+using MarvelousSoftware.QueryLanguage.Lexing;
 
 // todo: missing features:
 // 1. In method: `Name IN('a','b','c')`, `Labels IN('a', 'c')` 

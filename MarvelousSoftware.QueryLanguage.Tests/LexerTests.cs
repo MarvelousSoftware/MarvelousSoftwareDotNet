@@ -2,12 +2,12 @@
 using System.Diagnostics;
 using System.Linq;
 using MarvelousSoftware.QueryLanguage.Config;
-using MarvelousSoftware.QueryLanguage.Lexer;
-using MarvelousSoftware.QueryLanguage.Lexer.Tokens;
 using MarvelousSoftware.QueryLanguage.Models;
 using MarvelousSoftware.QueryLanguage.Tests.Model;
 using FluentAssertions;
-using MarvelousSoftware.QueryLanguage.Lexer.Functions;
+using MarvelousSoftware.QueryLanguage.Lexing;
+using MarvelousSoftware.QueryLanguage.Lexing.Functions;
+using MarvelousSoftware.QueryLanguage.Lexing.Tokens;
 using NUnit.Framework;
 
 namespace MarvelousSoftware.QueryLanguage.Tests

@@ -1,4 +1,4 @@
-﻿using MarvelousSoftware.QueryLanguage.Lexer.Tokens.Abstract;
+﻿using MarvelousSoftware.QueryLanguage.Lexing.Tokens.Abstract;
 using MarvelousSoftware.QueryLanguage.Parsing.Models;
 
 namespace MarvelousSoftware.QueryLanguage.Parsing

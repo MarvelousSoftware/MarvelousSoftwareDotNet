@@ -1,5 +1,5 @@
 using MarvelousSoftware.QueryLanguage.Config;
-using MarvelousSoftware.QueryLanguage.Lexer;
+using MarvelousSoftware.QueryLanguage.Lexing;
 
 namespace MarvelousSoftware.QueryLanguage.AutoCompletion
 {

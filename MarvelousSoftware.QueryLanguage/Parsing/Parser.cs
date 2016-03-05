@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MarvelousSoftware.QueryLanguage.Lexer;
-using MarvelousSoftware.QueryLanguage.Lexer.Tokens;
-using MarvelousSoftware.QueryLanguage.Lexer.Tokens.Abstract;
+using MarvelousSoftware.QueryLanguage.Lexing;
+using MarvelousSoftware.QueryLanguage.Lexing.Tokens;
+using MarvelousSoftware.QueryLanguage.Lexing.Tokens.Abstract;
 using MarvelousSoftware.QueryLanguage.Models;
 using MarvelousSoftware.QueryLanguage.Parsing.Expressions;
 using MarvelousSoftware.QueryLanguage.Parsing.Expressions.Abstract;

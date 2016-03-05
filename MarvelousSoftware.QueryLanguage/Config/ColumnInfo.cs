@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using MarvelousSoftware.Common.Extensions;
 using MarvelousSoftware.QueryLanguage.Attributes;
-using MarvelousSoftware.QueryLanguage.Lexer;
+using MarvelousSoftware.QueryLanguage.Lexing;
 using MarvelousSoftware.QueryLanguage.Models;
 
 namespace MarvelousSoftware.QueryLanguage.Config

@@ -3,7 +3,7 @@ using MarvelousSoftware.Core;
 using MarvelousSoftware.QueryLanguage.AutoCompletion;
 using MarvelousSoftware.QueryLanguage.Config;
 using MarvelousSoftware.QueryLanguage.Execution;
-using MarvelousSoftware.QueryLanguage.Lexer;
+using MarvelousSoftware.QueryLanguage.Lexing;
 using MarvelousSoftware.QueryLanguage.Models;
 using MarvelousSoftware.QueryLanguage.Parsing;
 

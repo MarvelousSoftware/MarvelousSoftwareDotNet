@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using MarvelousSoftware.QueryLanguage.Config;
-using MarvelousSoftware.QueryLanguage.Lexer;
-using MarvelousSoftware.QueryLanguage.Lexer.Tokens;
-using MarvelousSoftware.QueryLanguage.Lexer.Tokens.Abstract;
 using MarvelousSoftware.QueryLanguage.Parsing;
 using MarvelousSoftware.QueryLanguage.Parsing.Expressions;
 using MarvelousSoftware.QueryLanguage.Parsing.Expressions.Abstract;
 using MarvelousSoftware.QueryLanguage.Tests.Model;
 using FluentAssertions;
-using MarvelousSoftware.QueryLanguage.Lexer.Functions;
+using MarvelousSoftware.QueryLanguage.Lexing;
+using MarvelousSoftware.QueryLanguage.Lexing.Functions;
+using MarvelousSoftware.QueryLanguage.Lexing.Tokens;
+using MarvelousSoftware.QueryLanguage.Lexing.Tokens.Abstract;
 using MarvelousSoftware.QueryLanguage.Models;
 using NUnit.Framework;
 

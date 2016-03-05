@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using MarvelousSoftware.QueryLanguage.Config;
-using MarvelousSoftware.QueryLanguage.Lexer;
+using MarvelousSoftware.QueryLanguage.Lexing;
 
 namespace MarvelousSoftware.QueryLanguage.AutoCompletion.Completers.Impl
 {
