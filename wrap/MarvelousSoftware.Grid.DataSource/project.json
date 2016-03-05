@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net452": {
+      "wrappedProject": "../../AwesomeSolutions.Grid.DataSource/AwesomeSolutions.Grid.DataSource.csproj",
+      "bin": {
+        "assembly": "../../AwesomeSolutions.Grid.DataSource/obj/{configuration}/AwesomeSolutions.Grid.DataSource.dll",
+        "pdb": "../../AwesomeSolutions.Grid.DataSource/obj/{configuration}/AwesomeSolutions.Grid.DataSource.pdb"
+      },
+      "dependencies": {
+        "Microsoft.AspNet.Mvc": "5.2.3",
+        "Microsoft.AspNet.Razor": "3.2.3",
+        "Microsoft.AspNet.WebPages": "3.2.3",
+        "Microsoft.Web.Infrastructure": "1.0.0.0"
+      }
+    }
+  }
+}
