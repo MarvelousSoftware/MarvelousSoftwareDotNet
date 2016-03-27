@@ -54,7 +54,7 @@
     <Compile Include="AutoCompletion\Completers\EnumerableCompleterBase.cs" />
     <Compile Include="Config\ColumnInfo.cs" />
     <Compile Include="AutoCompletion\CompletionStrategy.cs" />
-    <Compile Include="Config\DefaultSyntaxConfig.cs" />
+    <Compile Include="Config\SyntaxConfig.cs" />
     <Compile Include="Config\ISyntaxConfig.cs" />
     <Compile Include="Config\ISyntaxConfigExtensions.cs" />
     <Compile Include="Config\Keyword.cs" />

@@ -55,8 +55,7 @@ namespace MarvelousSoftware.QueryLanguage.Tests.LexerParsers
         [Test]
         public void ColumnLexer_CanConfigurateCaseSensivity()
         {
-            var syntax = new DefaultSyntaxConfig() {ColumnNameCaseSensitive = false};
-            var config = new LanguageConfig<Person>(syntax).AddColumn("Name", x => x.FirstName);
+            var config = new LanguageConfig<Person>().Syntax(x => x.ColumnNameCaseSensitive = false).AddColumn("Name", x => x.FirstName);
             var parser = new ColumnTokenizer<Person>();
 
             var query = "nAmE some test";

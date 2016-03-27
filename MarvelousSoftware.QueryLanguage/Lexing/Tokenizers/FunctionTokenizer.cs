@@ -19,7 +19,7 @@ namespace MarvelousSoftware.QueryLanguage.Lexing.Tokenizers
                 ResetLengthOnEachRead = false
             };
 
-            var syntax = info.Lang.Syntax.Config;
+            var syntax = info.Lang.SyntaxConfig.Config;
             var functionName = reader.ReadTill(x => x == syntax.ParamsOpen || x == syntax.StringLiteralIdentifier);
 
             if (reader.IsInRange() == false || reader.CurrentChar != syntax.ParamsOpen)

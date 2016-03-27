@@ -14,7 +14,7 @@ namespace MarvelousSoftware.QueryLanguage.Lexing.Tokenizers.Abstract
             var result = new TokenizationResult();
 
             var reader = new QueryStringReader(info.Query, info.CurrentPosition);
-            var keyword = reader.ReadTillEndOfKeyword(GetPossibleKeywords(info), info.LanguageSpecialChars, info.Lang.Syntax.Config.KeywordCaseSensitive);
+            var keyword = reader.ReadTillEndOfKeyword(GetPossibleKeywords(info), info.LanguageSpecialChars, info.Lang.SyntaxConfig.Config.KeywordCaseSensitive);
 
             var token = GetToken(info.Lang.GetKeyword(keyword));
             token.SetPosition(info.CurrentPosition, reader.ReadLength);

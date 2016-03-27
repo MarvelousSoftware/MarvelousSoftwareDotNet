@@ -19,7 +19,7 @@ namespace MarvelousSoftware.QueryLanguage.SimplifiedFiltering
         public IQueryable<T> Filter<T>(SimplifiedFilteringModel filteringModel, IQueryable<T> data)
         {
             var languageConfig = new LanguageConfig<T>();
-            var andKeyword = languageConfig.Syntax.LogicalOperators.First(x => x.KeywordType == KeywordType.And); // TODO: keyword factory?
+            var andKeyword = languageConfig.SyntaxConfig.LogicalOperators.First(x => x.KeywordType == KeywordType.And); // TODO: keyword factory?
             ExpressionBase root = null;
 
             if (filteringModel.ColumnsFilters == null || filteringModel.ColumnsFilters.Count == 0)
@@ -44,7 +44,7 @@ namespace MarvelousSoftware.QueryLanguage.SimplifiedFiltering
                         case KeywordType.NotEmpty:
                         case KeywordType.IsTrue:
                         case KeywordType.IsFalse:
-                            var statementKeyword = languageConfig.Syntax.Statements.First(x => x.KeywordType == filter.CompareOperator);
+                            var statementKeyword = languageConfig.SyntaxConfig.Statements.First(x => x.KeywordType == filter.CompareOperator);
                             expression = new StatementExpression(new ColumnToken(column), new StatementToken(statementKeyword));
                             break;
                         default:
@@ -54,7 +54,7 @@ namespace MarvelousSoftware.QueryLanguage.SimplifiedFiltering
                                 return data;
                             }
 
-                            var compareOperator = languageConfig.Syntax.CompareOperators.First(x => x.KeywordType == filter.CompareOperator);
+                            var compareOperator = languageConfig.SyntaxConfig.CompareOperators.First(x => x.KeywordType == filter.CompareOperator);
                             expression = new CompareExpression(new ColumnToken(column), new CompareOperatorToken(compareOperator), new LiteralToken(value));
                             break;
                     }

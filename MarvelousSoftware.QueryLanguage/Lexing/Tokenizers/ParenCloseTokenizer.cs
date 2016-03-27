@@ -13,7 +13,7 @@ namespace MarvelousSoftware.QueryLanguage.Lexing.Tokenizers
         {
             var result = new TokenizationResult();
 
-            if (info.CurrentChar != info.Lang.Syntax.Config.ParenClose)
+            if (info.CurrentChar != info.Lang.SyntaxConfig.Config.ParenClose)
             {
                 result.Parsed = false;
                 var msg = $"\"{info.CurrentChar}\" is not a close parenthesis.";

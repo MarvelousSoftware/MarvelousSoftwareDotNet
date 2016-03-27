@@ -38,8 +38,7 @@ namespace MarvelousSoftware.QueryLanguage.Tests.LexerParsers
         [Test]
         public void CompareOperatorLexer_CanConfigureToBeCaseInsensitive()
         {
-            var syntax = new DefaultSyntaxConfig { KeywordCaseSensitive = false };
-            var config = new LanguageConfig<Person>(syntax);
+            var config = new LanguageConfig<Person>().Syntax(x => x.KeywordCaseSensitive = false);
 
             SimpleCanParse(KeywordType.StartsWith, typeof(string), "STARTS WITH", config);
             SimpleCanParse(KeywordType.EndsWith, typeof(string), "ENDS WITH", config);
@@ -115,7 +114,7 @@ namespace MarvelousSoftware.QueryLanguage.Tests.LexerParsers
         private void SimpleCanParse(KeywordType keywordType, Type columnType, string compareOperator = null, LanguageConfig<Person> config = null)
         {
             var cfg = config ?? DefaultConfig;
-            var @operator = compareOperator ?? cfg.Syntax.CompareOperators.First(x => x.KeywordType == keywordType).Syntax;
+            var @operator = compareOperator ?? cfg.SyntaxConfig.CompareOperators.First(x => x.KeywordType == keywordType).Syntax;
             var query = "Name " + @operator + " 'Test'";
 
             var result = Lexer.Tokenize(new LexerRuntimeInfo<Person>(query, cfg)

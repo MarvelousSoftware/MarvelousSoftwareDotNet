@@ -19,11 +19,6 @@ namespace MarvelousSoftware.QueryLanguage.Config
         internal AutoCompleteOptions<T> AutoCompleteOptions = new AutoCompleteOptions<T>();
 
         /// <summary>
-        /// Creates LanguageConfig instance using <see cref="DefaultSyntaxConfig"/> and <see cref="TokenizersProvider{T}"/>.
-        /// </summary>
-        public LanguageConfig() : this(null) { }
-
-        /// <summary>
         /// A list of added columns.
         /// </summary>
         public IReadOnlyList<ColumnInfo> Columns => _columns;
@@ -31,7 +26,7 @@ namespace MarvelousSoftware.QueryLanguage.Config
         /// <summary>
         /// Syntax configuration which is used mainly while parsing given queries.
         /// </summary>
-        public Syntax Syntax { get; }
+        internal Syntax SyntaxConfig { get; private set; } = new Syntax(new SyntaxConfig());
 
         /// <summary>
         /// Definition of declared functions. Allows to declare new functions and override existing one.
@@ -43,22 +38,8 @@ namespace MarvelousSoftware.QueryLanguage.Config
         /// </summary>
         public ITokenizersProvider<T> TokenizersProvider { get; private set; } = new TokenizersProvider<T>();
 
-        private Type ModelType { get; }
+        private Type ModelType { get; } = typeof (T);
         private readonly List<ColumnInfo> _columns = new List<ColumnInfo>();
-
-        /// <summary>
-        /// Creates LanguageConfig instance using given <see cref="syntaxConfig"/>.
-        /// </summary>
-        /// <param name="syntaxConfig">Syntax related configuration. If null then <see cref="DefaultSyntaxConfig"/> will be used.</param>
-        public LanguageConfig(ISyntaxConfig syntaxConfig)
-        {
-            ModelType = typeof (T);
-
-            if(syntaxConfig == null)
-                syntaxConfig = new DefaultSyntaxConfig();
-
-            Syntax = new Syntax(syntaxConfig);
-        }
 
         /// <summary>
         /// Configures auto completion.
@@ -66,6 +47,16 @@ namespace MarvelousSoftware.QueryLanguage.Config
         public LanguageConfig<T> AutoCompletion(Action<AutoCompleteOptions<T>> config)
         {
             config(AutoCompleteOptions);
+            return this;
+        }
+
+        /// <summary>
+        /// Configures language syntax.
+        /// </summary>
+        public LanguageConfig<T> Syntax(Action<SyntaxConfig> config)
+        {
+            config((SyntaxConfig)SyntaxConfig.Config);
+            SyntaxConfig = new Syntax(SyntaxConfig.Config);
             return this;
         }
 
@@ -125,7 +116,7 @@ namespace MarvelousSoftware.QueryLanguage.Config
             if(GetColumnInfo(columnName) != null)
                 throw new ArgumentException("Column with given name already exist.", nameof(columnName));
 
-            var invalid = Syntax.Config.GetLanguageSpecialChars().ToArray();
+            var invalid = SyntaxConfig.Config.GetLanguageSpecialChars().ToArray();
 
             if (columnName.IndexOfAny(invalid) > 0)
             {
@@ -148,7 +139,7 @@ namespace MarvelousSoftware.QueryLanguage.Config
         /// </summary>
         internal ColumnInfo GetColumnInfo(string columnName)
         {
-            if(Syntax.Config.ColumnNameCaseSensitive)
+            if(SyntaxConfig.Config.ColumnNameCaseSensitive)
                 return Columns.FirstOrDefault(x => x.ColumnName == columnName);
 
             return Columns.FirstOrDefault(x => x.ColumnName.ToLower() == columnName.ToLower());
@@ -159,7 +150,7 @@ namespace MarvelousSoftware.QueryLanguage.Config
         /// </summary>
         internal Keyword GetKeyword(string keywordName)
         {
-            return Syntax.Config.Keywords.FirstOrDefault(x => x.Syntax == keywordName);
+            return SyntaxConfig.Config.Keywords.FirstOrDefault(x => x.Syntax == keywordName);
         }
     }
 }

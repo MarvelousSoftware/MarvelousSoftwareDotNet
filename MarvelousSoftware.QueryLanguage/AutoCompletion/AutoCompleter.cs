@@ -97,7 +97,7 @@ namespace MarvelousSoftware.QueryLanguage.AutoCompletion
                     var currentCompletions = current.Completions.Select(x => new AutoCompletionRow()
                     {
                         Value = x.Value,
-                        Text = x.GetText(_config.Syntax.Config.StringLiteralIdentifier),
+                        Text = x.GetText(_config.SyntaxConfig.Config.StringLiteralIdentifier),
                         Group = completer.CompletionGroup
                     }).ToArray();
 

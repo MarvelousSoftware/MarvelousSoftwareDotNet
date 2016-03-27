@@ -20,7 +20,7 @@ namespace MarvelousSoftware.QueryLanguage.Tests
         [Test]
         public void ExpressionBasedFilter_ShouldWork()
         {
-            var syntax = new DefaultSyntaxConfig();
+            var syntax = new SyntaxConfig();
             var config = new LanguageConfig<Employee>().AddColumn(x => x.Salary);
 
             var compare1 = new CompareExpression(new ColumnToken(config.Columns.Single()),
@@ -32,7 +32,7 @@ namespace MarvelousSoftware.QueryLanguage.Tests
                 new LiteralToken(18000));
 
             var root = new BinaryExpression(compare1, 
-                new LogicalOperatorToken(config.Syntax.LogicalOperators.First(x => x.KeywordType == KeywordType.And)), 
+                new LogicalOperatorToken(config.SyntaxConfig.LogicalOperators.First(x => x.KeywordType == KeywordType.And)), 
                 compare2);
 
             Test(root, x => x.Salary.HasValue && x.Salary > 8000 && x.Salary < 18000);
@@ -41,7 +41,7 @@ namespace MarvelousSoftware.QueryLanguage.Tests
         [Test]
         public void ExpressionBasedFilter_ShouldReturnNoElementsIfFilteringForNullsOnNonNullableColumn()
         {
-            var syntax = new DefaultSyntaxConfig();
+            var syntax = new SyntaxConfig();
             var config = new LanguageConfig<Employee>().AddColumn(x => x.FunLevel);
 
             var root = new StatementExpression(new ColumnToken(config.Columns.Single()),
@@ -53,7 +53,7 @@ namespace MarvelousSoftware.QueryLanguage.Tests
         [Test]
         public void ExpressionBasedFilter_ShouldReturnAllElementsIfFilteringForNotNullsOnNonNullableColumn()
         {
-            var syntax = new DefaultSyntaxConfig();
+            var syntax = new SyntaxConfig();
             var config = new LanguageConfig<Employee>().AddColumn(x => x.FunLevel);
 
             var root = new StatementExpression(new ColumnToken(config.Columns.Single()),

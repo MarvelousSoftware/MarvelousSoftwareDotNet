@@ -69,12 +69,12 @@ namespace MarvelousSoftware.QueryLanguage.Lexing.Tokenizers
             var startsWithIdentifier = false;
             var endsWithIdentifier = false;
 
-            if (info.CurrentChar == info.Lang.Syntax.Config.StringLiteralIdentifier)
+            if (info.CurrentChar == info.Lang.SyntaxConfig.Config.StringLiteralIdentifier)
             {
                 startsWithIdentifier = true;
                 quotesCount = 1;
                 reader.MoveNext();
-                value = reader.ReadTillIvalidChar(new[] {info.Lang.Syntax.Config.StringLiteralIdentifier});
+                value = reader.ReadTillIvalidChar(new[] {info.Lang.SyntaxConfig.Config.StringLiteralIdentifier});
             }
             else
             {
@@ -85,13 +85,13 @@ namespace MarvelousSoftware.QueryLanguage.Lexing.Tokenizers
 
                 value = reader.ReadTillEndOfWord();
 
-                if (value.Any(x => info.Lang.Syntax.ReservedChars.Contains(x)))
+                if (value.Any(x => info.Lang.SyntaxConfig.ReservedChars.Contains(x)))
                 {
                     return new Result();
                 }
             }
 
-            if (reader.ReadLength > 0 && reader.CurrentChar == info.Lang.Syntax.Config.StringLiteralIdentifier)
+            if (reader.ReadLength > 0 && reader.CurrentChar == info.Lang.SyntaxConfig.Config.StringLiteralIdentifier)
             {
                 endsWithIdentifier = true;
                 quotesCount++;
@@ -107,7 +107,7 @@ namespace MarvelousSoftware.QueryLanguage.Lexing.Tokenizers
                 return new Result();
             }
 
-            foreach (var dateTimeFormat in info.Lang.Syntax.Config.DateTimeFormats)
+            foreach (var dateTimeFormat in info.Lang.SyntaxConfig.Config.DateTimeFormats)
             {
                 var reader = new QueryStringReader(info.Query, info.CurrentPosition);
 
@@ -119,7 +119,7 @@ namespace MarvelousSoftware.QueryLanguage.Lexing.Tokenizers
                 var value = reader.ReadTillEndOfXWords(words);
 
                 DateTime date;
-                if (DateTime.TryParseExact(value, dateTimeFormat, info.Lang.Syntax.Config.GetCultureInfo(), DateTimeStyles.None, out date))
+                if (DateTime.TryParseExact(value, dateTimeFormat, info.Lang.SyntaxConfig.Config.GetCultureInfo(), DateTimeStyles.None, out date))
                 {
                     return new Result(date, reader.ReadLength);
                 }
@@ -132,7 +132,7 @@ namespace MarvelousSoftware.QueryLanguage.Lexing.Tokenizers
         {
             var reader = new QueryStringReader(info.Query, info.CurrentPosition);
 
-            var config = info.Lang.Syntax.Config;
+            var config = info.Lang.SyntaxConfig.Config;
             var word = reader.ReadTillEndOfWord();
 
             if (config.NullConstantCaseSensitive == false)
@@ -166,7 +166,7 @@ namespace MarvelousSoftware.QueryLanguage.Lexing.Tokenizers
 
             var reader = new QueryStringReader(info.Query, info.CurrentPosition);
 
-            var value = reader.ReadTillEndOfNumber(info.Lang.Syntax.Config.NumberDecimalSeparator);
+            var value = reader.ReadTillEndOfNumber(info.Lang.SyntaxConfig.Config.NumberDecimalSeparator);
 
             var type = info.LastColumn.SystemType;
             object number;
@@ -193,10 +193,10 @@ namespace MarvelousSoftware.QueryLanguage.Lexing.Tokenizers
 
             var reader = new QueryStringReader(info.Query, info.CurrentPosition);
 
-            var value = reader.ReadTillEndOfNumber(info.Lang.Syntax.Config.NumberDecimalSeparator);
+            var value = reader.ReadTillEndOfNumber(info.Lang.SyntaxConfig.Config.NumberDecimalSeparator);
 
             var type = info.LastColumn.SystemType;
-            var cultureInfo = info.Lang.Syntax.Config.GetCultureInfo();
+            var cultureInfo = info.Lang.SyntaxConfig.Config.GetCultureInfo();
             object number;
 
             if (LiteralParserHelper.TryParseFloat(value, type, cultureInfo, out number))

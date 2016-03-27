@@ -23,19 +23,19 @@ namespace MarvelousSoftware.QueryLanguage.AutoCompletion.Completers.Impl
                 case TokenType.ParenOpen:
                     return new List<string>
                     {
-                        Config.Syntax.Config.ParenOpen.ToString()
+                        Config.SyntaxConfig.Config.ParenOpen.ToString()
                     };
                 case TokenType.ParenClose:
                     return new List<string>
                     {
-                        Config.Syntax.Config.ParenClose.ToString()
+                        Config.SyntaxConfig.Config.ParenClose.ToString()
                     };
                 case TokenType.CompareOperator:
                     if (completionInfo.ColumnInfo == null)
                     {
                         return new string[0];
                     }
-                    return Config.Syntax.Config.Keywords
+                    return Config.SyntaxConfig.Config.Keywords
                         .Where(x => x.TokenType == completionInfo.TokenType)
                         .Where(completionInfo.ColumnInfo.IsCompareOperatorAllowed)
                         .Select(x => x.Syntax);
@@ -44,12 +44,12 @@ namespace MarvelousSoftware.QueryLanguage.AutoCompletion.Completers.Impl
                     {
                         return new string[0];
                     }
-                    return Config.Syntax.Config.Keywords
+                    return Config.SyntaxConfig.Config.Keywords
                         .Where(x => x.TokenType == completionInfo.TokenType)
                         .Where(completionInfo.ColumnInfo.IsStatementAllowed)
                         .Select(x => x.Syntax);
                 default:
-                    return Config.Syntax.Config.Keywords
+                    return Config.SyntaxConfig.Config.Keywords
                         .Where(x => x.TokenType == completionInfo.TokenType)
                         .Select(x => x.Syntax);
             }

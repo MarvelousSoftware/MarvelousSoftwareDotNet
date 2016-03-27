@@ -35,7 +35,7 @@ namespace MarvelousSoftware.QueryLanguage.Config
         /// <summary>
         /// Allows to configure if <see cref="NullConstant"/> is parsed with case sensivity.
         /// </summary>
-        bool NullConstantCaseSensitive { get;}
+        bool NullConstantCaseSensitive { get; }
 
         /// <summary>
         /// Open parenthesis char.
@@ -60,11 +60,11 @@ namespace MarvelousSoftware.QueryLanguage.Config
         /// <summary>
         /// Start of function's parameters.
         /// </summary>
-        char ParamsOpen { get; set; }
+        char ParamsOpen { get; }
 
         /// <summary>
         /// End of function's parameters.
         /// </summary>
-        char ParamsClose { get; set; }
+        char ParamsClose { get; }
     }
 }

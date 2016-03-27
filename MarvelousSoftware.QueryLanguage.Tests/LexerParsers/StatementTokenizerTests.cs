@@ -22,17 +22,16 @@ namespace MarvelousSoftware.QueryLanguage.Tests.LexerParsers
         [Test]
         public void StatementLexer_CanParseAllStatements()
         {
-            foreach (var statement in DefaultConfig.Syntax.Statements)
+            foreach (var statement in DefaultConfig.SyntaxConfig.Statements)
                 SimpleCanParse(statement.Syntax, statement.KeywordType);
         }
 
         [Test]
         public void StatementLexer_CanConfigureToBeCaseInsensitive()
         {
-            var syntax = new DefaultSyntaxConfig {KeywordCaseSensitive = false};
-            var config = new LanguageConfig<Person>(syntax);
+            var config = new LanguageConfig<Person>().Syntax(x => x.KeywordCaseSensitive = false);
 
-            foreach (var statement in DefaultConfig.Syntax.Statements)
+            foreach (var statement in DefaultConfig.SyntaxConfig.Statements)
                 SimpleCanParse(statement.Syntax.ToUpper(), statement.KeywordType, config);
         }
 

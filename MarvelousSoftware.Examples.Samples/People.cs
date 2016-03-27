@@ -19,8 +19,11 @@ namespace MarvelousSoftware.Examples.Samples
 
                 var userName = "admin";
                 var random = new Random();
+                
                 while (people.Count < count)
                 {
+                    var rating = random.Next(0, 100);
+
                     people.Add(new Person()
                     {
                         FirstName = FirstNames[random.Next(FirstNames.Length - 1)],
@@ -29,7 +32,8 @@ namespace MarvelousSoftware.Examples.Samples
                         PlaceOfResidence = Cities[random.Next(0, Cities.Length)],
                         ProjectId = projects[random.Next(0, projects.Length)].Id,
                         DueDate = new DateTime(random.Next(2010, DateTime.UtcNow.AddYears(10).Year), random.Next(1, 12), 1),
-                        UserName = userName
+                        UserName = userName,
+                        Rating = random.Next(0, 20) == 0 ? (int?)null : rating
                     });
                     userName = null;
                 }

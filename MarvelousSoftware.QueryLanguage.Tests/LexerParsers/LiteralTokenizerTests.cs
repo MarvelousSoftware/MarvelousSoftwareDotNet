@@ -213,7 +213,7 @@ namespace MarvelousSoftware.QueryLanguage.Tests.LexerParsers
             return token;
         }
 
-        private static TokenizationResult GetLexer(string query, Type memberType, Action<DefaultSyntaxConfig> config = null, 
+        private static TokenizationResult GetLexer(string query, Type memberType, Action<SyntaxConfig> config = null, 
             bool exact = false, bool allowedToBeGreedy = false)
         {
             if (exact == false)
@@ -225,7 +225,7 @@ namespace MarvelousSoftware.QueryLanguage.Tests.LexerParsers
                 .AddColumn("Name", x => x.FirstName) 
                 .AddColumn("LastName", x => x.LastName);
 
-            config?.Invoke((DefaultSyntaxConfig)defaultConfig.Syntax.Config);
+            config?.Invoke((SyntaxConfig)defaultConfig.SyntaxConfig.Config);
 
             var result = Tokenizer.Tokenize(new LexerRuntimeInfo<Person>(query, defaultConfig)
             {

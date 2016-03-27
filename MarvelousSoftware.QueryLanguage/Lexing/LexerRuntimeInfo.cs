@@ -12,7 +12,7 @@ namespace MarvelousSoftware.QueryLanguage.Lexing
             Query = query;
             QueryLength = query.Length;
             Lang = lang;
-            LanguageSpecialChars = lang.Syntax.Config.GetLanguageSpecialChars();
+            LanguageSpecialChars = lang.SyntaxConfig.Config.GetLanguageSpecialChars();
         }
 
         /// <summary>

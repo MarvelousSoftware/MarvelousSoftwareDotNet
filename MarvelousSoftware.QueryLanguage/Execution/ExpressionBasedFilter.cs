@@ -4,7 +4,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using MarvelousSoftware.Core.Utils;
 using MarvelousSoftware.QueryLanguage.Config;
-using MarvelousSoftware.QueryLanguage.Lexing;
 using MarvelousSoftware.QueryLanguage.Lexing.Tokens;
 using MarvelousSoftware.QueryLanguage.Models;
 using MarvelousSoftware.QueryLanguage.Parsing.Expressions;
@@ -106,12 +105,12 @@ namespace MarvelousSoftware.QueryLanguage.Execution
 
                 case KeywordType.IsTrue:
                     Visit(new CompareExpression(statementExpression.Column, 
-                        new CompareOperatorToken(new Keyword("", KeywordType.Equal, TokenType.CompareOperator)), 
+                        new CompareOperatorToken(new Keyword("", KeywordType.Equal)), 
                         new LiteralToken(true)));
                     return;
                 case KeywordType.IsFalse:
                     Visit(new CompareExpression(statementExpression.Column,
-                        new CompareOperatorToken(new Keyword("", KeywordType.Equal, TokenType.CompareOperator)),
+                        new CompareOperatorToken(new Keyword("", KeywordType.Equal)),
                         new LiteralToken(false)));
                     return;
                 default:

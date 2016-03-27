@@ -47,6 +47,7 @@ namespace MarvelousSoftware.QueryLanguage.Tests
 
             // && has higher precedence in C#, in the query language it doesn't
             // that's why parens are needed
+            // TODO: change that
             Test("FirstName = \"Damian\" or LastName = \"Kaminski\" and FirstName is empty", 
                 x => (x.FirstName == "Damian" || x.LastName == "Kaminski") && IsNullOrEmpty(x.FirstName));
 

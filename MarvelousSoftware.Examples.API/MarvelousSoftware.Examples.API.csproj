@@ -135,6 +135,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\CitiesWithQueryLanguageController.cs" />
+    <Compile Include="Controllers\MqlWithCustomSytanxController.cs" />
     <Compile Include="Controllers\MqlWithPredefinedFunctionsController.cs" />
     <Compile Include="Controllers\MqlWithFunctionsController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />

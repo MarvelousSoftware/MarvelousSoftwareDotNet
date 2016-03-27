@@ -14,7 +14,7 @@ namespace MarvelousSoftware.QueryLanguage.Lexing.Tokenizers
 
         public override IEnumerable<Keyword> GetPossibleKeywords(LexerRuntimeInfo<T> info)
         {
-            return info.Lang.Syntax.CompareOperators;
+            return info.Lang.SyntaxConfig.CompareOperators;
         }
 
         public override Error OnNotFoundError(string word)

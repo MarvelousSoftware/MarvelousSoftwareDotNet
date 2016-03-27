@@ -10,6 +10,7 @@ namespace MarvelousSoftware.Examples.Samples
         public string PlaceOfResidence { get; set; }
         public int ProjectId { get; set; }
         public DateTime DueDate { get; set; }
+        public int? Rating { get; set; }
 
         private string _userName;
 

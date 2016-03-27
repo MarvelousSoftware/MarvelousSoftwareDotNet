@@ -1,4 +1,5 @@
-﻿using MarvelousSoftware.QueryLanguage.Lexing;
+﻿using System;
+using MarvelousSoftware.QueryLanguage.Lexing;
 
 namespace MarvelousSoftware.QueryLanguage.Config
 {
@@ -7,11 +8,40 @@ namespace MarvelousSoftware.QueryLanguage.Config
     /// </summary>
     public class Keyword
     {
-        public Keyword(string syntax, KeywordType keywordType, TokenType tokenType)
+        public Keyword(string syntax, KeywordType keywordType)
         {
             Syntax = syntax;
             KeywordType = keywordType;
-            TokenType = tokenType;
+
+            switch (keywordType)
+            {
+                case KeywordType.Equal:
+                case KeywordType.NotEqual:
+                case KeywordType.GreaterThan:
+                case KeywordType.GreaterThanOrEqual:
+                case KeywordType.LessThan:
+                case KeywordType.LessThanOrEqual:
+                case KeywordType.StartsWith:
+                case KeywordType.EndsWith:
+                case KeywordType.Contains:
+                    TokenType = TokenType.CompareOperator;
+                    break;
+
+                case KeywordType.Empty:
+                case KeywordType.NotEmpty:
+                case KeywordType.IsTrue:
+                case KeywordType.IsFalse:
+                    TokenType = TokenType.Statement;
+                    break;
+
+                case KeywordType.And:
+                case KeywordType.Or:
+                    TokenType = TokenType.LogicalOperator;
+                    break;
+
+                default:
+                    throw new NotSupportedException();
+            }
         }
 
         /// <summary>

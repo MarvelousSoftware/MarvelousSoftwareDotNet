@@ -22,17 +22,16 @@ namespace MarvelousSoftware.QueryLanguage.Tests.LexerParsers
         [Test]
         public void LogicalOperatorLexer_CanParseAllOperators()
         {
-            foreach (var logicalOperator in DefaultConfig.Syntax.LogicalOperators)
+            foreach (var logicalOperator in DefaultConfig.SyntaxConfig.LogicalOperators)
                 SimpleCanParse(logicalOperator.Syntax, logicalOperator.KeywordType);
         }
 
         [Test]
         public void LogicalOperatorLexer_CanConfigureToBeCaseInsensitive()
         {
-            var syntax = new DefaultSyntaxConfig { KeywordCaseSensitive = false };
-            var config = new LanguageConfig<Person>(syntax);
+            var config = new LanguageConfig<Person>().Syntax(x => x.KeywordCaseSensitive = false);
 
-            foreach (var logicalOperator in DefaultConfig.Syntax.LogicalOperators)
+            foreach (var logicalOperator in DefaultConfig.SyntaxConfig.LogicalOperators)
                 SimpleCanParse(logicalOperator.Syntax.ToUpper(), logicalOperator.KeywordType, config);
         }
 

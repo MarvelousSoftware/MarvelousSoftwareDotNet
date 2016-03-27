@@ -446,7 +446,7 @@ namespace MarvelousSoftware.QueryLanguage.Tests
 
         private IEnumerable<string> GetCompareOperatorsExceptOf(List<string> expected)
         {
-            var unexpected = _config.Syntax.CompareOperators
+            var unexpected = _config.SyntaxConfig.CompareOperators
                 .Where(x => expected.Any(z => z.Equals(x.Syntax, StringComparison.InvariantCultureIgnoreCase)) == false)
                 .Select(x => x.Syntax);
             return unexpected;
