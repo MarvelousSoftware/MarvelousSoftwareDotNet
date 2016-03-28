@@ -20,6 +20,7 @@ namespace MarvelousSoftware.Examples.API.Controllers
             .AddColumn(x => x.DateOfBirth)
             .AddColumn(x => x.PlaceOfResidence)
             .AddColumn(x => x.DueDate)
+            .AddColumn(x => x.Rating)
             .WithPredefinedFunctions() // adds predefined functions such as "today" or "now"
             .AutoCompletion(c => c.ValueDataSource = _people); // source of auto completions 
 
