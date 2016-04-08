@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MarvelousSoftware.QueryLanguage.Config;
 using MarvelousSoftware.QueryLanguage.Lexing;
 using MarvelousSoftware.QueryLanguage.Lexing.Tokens;
 using MarvelousSoftware.QueryLanguage.Lexing.Tokens.Abstract;
@@ -29,10 +30,10 @@ namespace MarvelousSoftware.QueryLanguage.Parsing
             }
 
             var result = new ParsingResult();
-            var reversed = GetReversedAwesomeNotation(tokens);
+            var reversed = GetPostfixNotation(tokens);
             var expressions = new Stack<ExpressionBase>();
 
-            for (int i = 0; i < reversed.Length; i++)
+            for (var i = 0; i < reversed.Length; i++)
             {
                 var token = reversed[i];
 
@@ -94,82 +95,73 @@ namespace MarvelousSoftware.QueryLanguage.Parsing
         /// (FN = 'D' and((LN = 'Z' and A = 14) or LN = 'K'))
         /// FN 'D' = LN 'Z' = A 14 = and LN 'K' = or and
         /// 
-        /// General idea: 
-        /// 1. Similar to Reversed Polish Notation
-        /// 2. Stacks for logical operators and other
-        /// 3. Logical operators poped on paren close
+        /// General idea is similar to Reversed Polish Notation.
         /// </remarks>
-        private static TokenBase[] GetReversedAwesomeNotation(IReadOnlyCollection<TokenBase> tokens)
+        private static TokenBase[] GetPostfixNotation(IReadOnlyCollection<TokenBase> tokens)
         {
-            var logicalOperatorsStack = new Stack<TokenBase>();
-            var final = new TokenBase[tokens.Count];
-
-            var i = 0;
-            var operands = 0;
-            foreach (var token in tokens)
+            var precedences = new Dictionary<KeywordType, short>()
             {
-                while (final[i] != null)
-                {
-                    i++;
-                }
+                { KeywordType.Or, 0},
+                { KeywordType.And, 1}
+            };
 
-                if (operands == 2)
-                {
-                    final[i] = logicalOperatorsStack.Pop();
-                    i++;
-                    operands = 1;
-                }
+            var output = new List<TokenBase>(tokens.Count);
+            var stack = new Stack<TokenBase>();
 
+            foreach (var token in tokens.Where(x => x.TokenType != TokenType.Whitespace))
+            {
                 switch (token.TokenType)
                 {
                     case TokenType.Column:
-                        final[i] = token;
-                        break;
                     case TokenType.Literal:
                     case TokenType.Function:
                     case TokenType.Statement:
-                        final[i] = token;
-                        operands++;
+                        output.Add(token);
+                        if (stack.Any() && stack.Peek().TokenType == TokenType.CompareOperator)
+                            output.Add(stack.Pop());
                         break;
                     case TokenType.CompareOperator:
-                        final[i + 1] = token;
-                        i--;
+                        stack.Push(token);
+                        break;
+
+                    case TokenType.LogicalOperator:
+                        var tokenKeyword = token.As<LogicalOperatorToken>().KeywordType;
+                        while (stack.Any() && stack.Peek().TokenType == TokenType.LogicalOperator)
+                        {
+                            var stackKeyword = stack.Peek().As<LogicalOperatorToken>().KeywordType;
+                            if (precedences[tokenKeyword] > precedences[stackKeyword])
+                            {
+                                break;
+                            }
+
+                            output.Add(stack.Pop());
+                        }
+
+                        stack.Push(token);
+                        break;
+
+                    case TokenType.ParenOpen:
+                        stack.Push(token);
                         break;
                     case TokenType.ParenClose:
-                        operands = 1;
-                        continue;
-                    case TokenType.LogicalOperator:
-                        logicalOperatorsStack.Push(token);
-                        continue;
-                    case TokenType.ParenOpen:
-                        operands = 0;
-                        continue;
-                    case TokenType.Whitespace:
-                        continue;
+                        while (stack.Any() && stack.Peek().TokenType != TokenType.ParenOpen)
+                        {
+                            output.Add(stack.Pop());
+                        }
+                        stack.Pop();
+                        break;
+                    
                     default:
                         throw new NotSupportedException();
                 }
-
-                i++;
             }
 
-            while (logicalOperatorsStack.Count != 0)
+            while (stack.Count != 0)
             {
-                while (final[i] != null)
-                {
-                    i++;
-                }
-
-                final[i] = logicalOperatorsStack.Pop();
-                i++;
+                output.Add(stack.Pop());
             }
 
-            var total = 0;
-            while (final.Length > total && final[total] != null)
-            {
-                total++;
-            }
-            return new ArraySegment<TokenBase>(final, 0, total).ToArray();
+            return output.ToArray();
         }
 
         private void NotifyVisitors(Action<ExpressionVisitor> action)

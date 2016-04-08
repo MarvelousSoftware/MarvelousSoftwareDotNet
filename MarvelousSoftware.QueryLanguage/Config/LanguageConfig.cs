@@ -125,6 +125,7 @@ namespace MarvelousSoftware.QueryLanguage.Config
                 throw new ArgumentException(msg, nameof(columnName));
             }
 
+            // TODO: support for fields
             var property = ModelType.GetNestedProperty(propertyName);
 
             if(property == null)

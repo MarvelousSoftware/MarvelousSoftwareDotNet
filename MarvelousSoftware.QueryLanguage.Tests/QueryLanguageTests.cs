@@ -39,20 +39,20 @@ namespace MarvelousSoftware.QueryLanguage.Tests
         [Test]
         public void QueryLanguage_ShouldBeAbleToSearchUsingLogicalOperators()
         {
-            Test("FirstName is empty and LastName is empty", 
-                x => IsNullOrEmpty(x.FirstName) && IsNullOrEmpty(x.LastName));
-
-            Test("FirstName is empty or LastName is empty",
-                x => IsNullOrEmpty(x.FirstName) || IsNullOrEmpty(x.LastName));
-
-            // && has higher precedence in C#, in the query language it doesn't
-            // that's why parens are needed
-            // TODO: change that
-            Test("FirstName = \"Damian\" or LastName = \"Kaminski\" and FirstName is empty", 
-                x => (x.FirstName == "Damian" || x.LastName == "Kaminski") && IsNullOrEmpty(x.FirstName));
-
-            Test("FirstName = \"Damian\" and LastName = \"Kaminski\" or FirstName is empty",
-                x => x.FirstName == "Damian" && x.LastName == "Kaminski" || IsNullOrEmpty(x.FirstName));
+            // ReSharper disable RedundantLogicalConditionalExpressionOperand
+            // ReSharper disable ArrangeRedundantParentheses
+            TestBooleanLogic("true or true", () => true || true);
+            TestBooleanLogic("true and true", () => true && true);
+            TestBooleanLogic("true and false", () => true && false);
+            TestBooleanLogic("true or true and false", () => true || true && false);
+            TestBooleanLogic("(true or true) and false", () => (true || true) && false);
+            TestBooleanLogic("true or (true and false)", () => true || (true && false));
+            TestBooleanLogic("(true or true) or true or true or true and false",
+                        () => (true || true) || true || true || true && false);
+            TestBooleanLogic("((true or true) or true or true or true) and false",
+                        () => ((true || true) || true || true || true) && false);
+            // ReSharper restore ArrangeRedundantParentheses
+            // ReSharper restore RedundantLogicalConditionalExpressionOperand
         }
 
         [Test]
@@ -172,6 +172,25 @@ namespace MarvelousSoftware.QueryLanguage.Tests
                     Console.WriteLine(employee);
                 }   
             }
+        }
+
+        private static void TestBooleanLogic(string query, Func<bool> expectedResult)
+        {
+            // changes `true or false` to `True is true or True is false` to make testing easier and cleaner
+            query = query.Replace("true", "True is true");
+            query = query.Replace("false", "True is false");
+
+            var config = new LanguageConfig<TrueFalse>().AddColumn(x => x.True).AddColumn(x => x.False);
+            var language = new QueryLanguage<TrueFalse>(config);
+            var data = new[] { new TrueFalse() }.AsQueryable();
+            var expected = expectedResult();
+
+            var result = language.Filter(data, query);
+
+            result.Errors.Should().BeNullOrEmpty();
+            var received = result.Elements.ToArray();
+
+            received.Length.Should().Be(expected ? 1 : 0);
         }
 
         private static LanguageConfig<Employee> GetConfig()
